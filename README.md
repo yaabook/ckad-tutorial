@@ -14,7 +14,7 @@ kubectl apply -f init.yaml
 
 ### 下载ez-cli使用cli教程
 ```
-sudo curl https://get-ez.32cloud.cn/ez --output /usr/bin/ez
+sudo curl https://get-ez.32cloud.cn/latest/ez --output /usr/bin/ez
 sudo chmod +x /usr/bin/ez
 ```
 
