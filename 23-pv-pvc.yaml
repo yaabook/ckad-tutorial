@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: task-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: keys
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/ckad/KDSP00101/data/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: task-pv-claim
+spec:
+  storageClassName: keys
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+     storage: 200Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: task-pv-pod
+  labels:
+    app: my-storage-app
+spec:
+  # nodeSelector:
+  #   kubernetes.io/hostname: k2node1
+  containers:
+  - name: nginx
+    image: nginx:1.16
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+    volumeMounts:
+      - mountPath: "/usr/share/nginx/html"
+        name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim

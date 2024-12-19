@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: canary-chipmunk-deployment
+    run: dep-svc
+  name: canary-chipmunk-deployment
+  namespace: goshawk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: canary-chipmunk-deployment
+      run: dep-svc
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: canary-chipmunk-deployment
+        run: dep-svc
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP

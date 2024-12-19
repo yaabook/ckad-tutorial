@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ing-svc
+  namespace: ingress-ckad
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 81
+  selector:
+    name: nginx-ing
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress-test
+  namespace: ingress-ckad
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+   - http:
+       paths:
+       - pathType: Prefix
+         path: "/hello"
+         backend:
+           service:
+             name: nginx-ing-svc
+             port:
+               number: 80

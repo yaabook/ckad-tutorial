@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-resources
+  namespace: pod-resources
+spec:
+  containers:
+  - name: app
+    image: nginx:1.16
+    resources:
+      requests:
+        memory: "40Mi"
+        cpu: "50m"
+      limits:
+        memory: "40Mi"
+        cpu: "50m"

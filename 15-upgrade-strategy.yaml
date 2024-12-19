@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+  namespace: ckad00015
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: 
+    rollingUpdate:
+      maxSurge: 10%
+      maxUnavailable: 4
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP

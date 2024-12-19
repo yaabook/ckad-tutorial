@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 10
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox :stable
+            command: ["sh", "-c", "date"]
+          restartPolicy: Never

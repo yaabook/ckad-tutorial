@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ckad00017-deployment
+  name: ckad00017-deployment
+  namespace: ckad00017
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: ckad00017-deployment
+      tier: dmz
+  template:
+    metadata:
+      labels:
+        app: ckad00017-deployment
+        tier: dmz
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: nginx-conf-ckad00017
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        ports:
+        - containerPort: 81
+          name: http
+          protocol: TCP
+        volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/conf.d/

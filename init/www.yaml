@@ -1,0 +1,23 @@
+# copy to /ckad/www-deployment-mite/www.yaml
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  labels:
+    app: www-deployment
+  name: www-deployment
+  namespace: garfish
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: www-deployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: www-deployment
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx

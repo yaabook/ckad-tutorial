@@ -1,0 +1,44 @@
+# cp to /ckad/goshawk/current-chipmunk-deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: current-chipmunk-deployment
+    run: dep-svc
+  name: current-chipmunk-deployment
+  namespace: goshawk
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: current-chipmunk-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: current-chipmunk-deployment
+        run: dep-svc
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chipmunk-service
+  namespace: goshawk
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    run: dep-svc
+  type: ClusterIP

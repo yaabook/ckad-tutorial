@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poller
+  namespace: default
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.16
+  - name: ambassador-container
+    image: haproxy:lts
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+    volumeMounts:
+      - name: config
+        mountPath: "/usr/local/etc/"
+        readOnly: true
+  volumes:
+  - name: config
+    configMap:
+      name: haproxy-config
