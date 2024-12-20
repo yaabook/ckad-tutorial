@@ -32,11 +32,17 @@ Success, Playground instance has been created
 $ ez pg ls
 == List of Playground ==
 id      Name            Note            Type    Image                   IP              State  
-146     gz1-vm60        ckad-test       S2C4G   Ubuntu20.4              10.32.1.60      running
+146     gz1-vm60        ckad-test       S2C4G   Ubuntu20.4              10.32.1.xx      running
 
-# 使用playgound id进行ssh连接（Beta版功能）
+# 使用playgound id进行ssh连接
 $ ez pg ssh -i 146
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-1104-kvm x86_64)
+
+# 如果是使用非32cloud.cn的主机，刚需要先创建ingress后，再用ssh连接到playground主机
+$ ez ing create --ip 10.32.1.xx -port 22
+
+# 增加--ingress参数进行连接即可
+$ ez ing ssh 146 --ingress
 
 Last login: Sun Dec 10 02:32:39 2023 from 192.168.1.17
 ubuntu@gz1-vm60:~$ 
