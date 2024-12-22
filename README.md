@@ -9,6 +9,7 @@
 - 使用云主机，结合k3d安装教程进行安装[教程](k3d-setup.md)
 - 使用本地虚拟机，结合k3d安装教程进行安装[教程](k3d-setup.md)
 - 使用ez-cli创建免费的playground云实例并安装K8S练习环境[教程](k3d-setup.md)
+- 使用Mac笔记本使用playground[教程](k3d-setup-darwin.md)
 
 ### 下载ez-cli使用ckad教程进行练习
 

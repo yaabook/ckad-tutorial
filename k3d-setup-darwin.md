@@ -1,11 +1,11 @@
-# ez playground创建k8s-k3d练习集群
+# 在Mac本上使用ez playground创建k8s-k3d练习集群
 
 ## 使用方法
-在一台可上网的Linux机器上执行下面的命令,可是本地虚拟机，云主机。
+确保你的Mac本能正常上网
 
 ### 下载ez-cli
 ```
-sudo curl https://get-ez.32cloud.cn/latest/ez --output /usr/bin/ez
+sudo curl https://get-ez.32cloud.cn/latest/darwin-ez --output /usr/bin/ez
 sudo chmod +x /usr/bin/ez
 
 ez user login -u yourname
