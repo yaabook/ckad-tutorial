@@ -132,5 +132,7 @@ kube-system   svclb-traefik-bc8f3b48-k52p7              2/2     Running         
 kube-system   svclb-traefik-bc8f3b48-xhgm5              2/2     Running             0          96s
 kube-system   traefik-d7c9c5778-bshkl                   1/1     Running             0          97s
 
-# 恭喜你，现在可以开始练习CKAD考试题目了
 ```
+
+恭喜你，现在可以开始练习CKAD考试题目了
+[答题教程](README.md)

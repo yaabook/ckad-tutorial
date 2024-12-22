@@ -1,12 +1,14 @@
-# 在Mac本上使用ez playground创建k8s-k3d练习集群
+# 在Mac笔记本上使用ez playground创建k8s-k3d练习集群
 
 ## 使用方法
-确保你的Mac本能正常上网
+确保你的Mac本能正常上网, 需要先注册ez帐号：
+https://my.32cloud.cn
 
 ### 下载ez-cli
 ```
-sudo curl https://get-ez.32cloud.cn/latest/darwin-ez --output /usr/bin/ez
-sudo chmod +x /usr/bin/ez
+# 参考下载命令
+sudo curl https://get-ez.32cloud.cn/latest/darwin-ez --output /usr/local/bin/ez
+sudo chmod +x /usr/local/bin/ez
 
 ez user login -u yourname
 ```
@@ -34,11 +36,7 @@ $ ez pg ls
 id      Name            Note            Type    Image                   IP              State  
 146     gz1-vm60        ckad-test       S2C4G   Ubuntu20.4              10.32.1.xx      running
 
-# 使用playgound id进行ssh连接
-$ ez pg ssh -i 146
-Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-1104-kvm x86_64)
-
-# 如果是使用非32cloud.cn的主机，刚需要先创建ingress后，再用ssh连接到playground主机
+# 先创建ingress后，再用ssh连接到playground主机
 $ ez ing create --ip 10.32.1.xx -port 22
 
 # 增加--ingress参数进行连接即可
@@ -132,5 +130,6 @@ kube-system   svclb-traefik-bc8f3b48-k52p7              2/2     Running         
 kube-system   svclb-traefik-bc8f3b48-xhgm5              2/2     Running             0          96s
 kube-system   traefik-d7c9c5778-bshkl                   1/1     Running             0          97s
 
-# 恭喜你，现在可以开始练习CKAD考试题目了
 ```
+恭喜你，现在可以开始练习CKAD考试题目了
+[答题教程](README.md)
