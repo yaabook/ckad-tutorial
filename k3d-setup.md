@@ -39,9 +39,10 @@ $ ez pg ssh -i 146
 Welcome to Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-1104-kvm x86_64)
 
 # 如果是使用非32cloud.cn的主机，刚需要先创建ingress后，再用ssh连接到playground主机
-$ ez ing create --ip 10.32.1.xx -port 22
+$ ez ing create --ip 10.32.1.xx --port 22
 
 # 增加--ingress参数进行连接即可
+$ ez pg ssh 146 --ingress
 $ ez ing ssh 146 --ingress
 
 Last login: Sun Dec 10 02:32:39 2023 from 192.168.1.17
