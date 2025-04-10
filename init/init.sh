@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directories=("/ckad/chief-cardinal/" "/ckad/CKAD00016" "/ckad/credible-mite/" "/ckad/KDSP00101/data/" "/ckad/goshawk" "/ckad/daring-moccasin/" "/ckad/prompt-escargot/" "/ckad/CKAD202206/" "/ckad/ambassador/")
+directories=("/ckad/chief-cardinal/" "/ckad/DF/" "/ckad/CKAD00016" "/ckad/credible-mite/" "/ckad/KDSP00101/data/" "/ckad/goshawk" "/ckad/daring-moccasin/" "/ckad/prompt-escargot/" "/ckad/CKAD202206/" "/ckad/ambassador/")
 
 for dir in "${directories[@]}"; do
   if [ ! -d "$dir" ]; then
@@ -16,3 +16,4 @@ cp ingress.yaml /ckad/CKAD202206/ingress.yaml
 cp haproxy.cfg /ckad/ambassador/haproxy.cfg
 cp index.html /ckad/KDSP00101/data/index.html
 cp nosql.yaml /ckad/chief-cardinal/nosql.yaml
+cp Dockerfile /ckad/DF/
